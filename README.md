@@ -7,3 +7,5 @@ I don't know if there's better method, but this work fine. I used warmth because
     4. PUT warmth (original value) to the above URL
     5. wait 1 second
     6. loop 5 times to point 2
+
+You may need to increase the number of loop interations if your gateway is slower to update the alive status for some reason. I tested it with 4 bulbs. If you have more, it may take more time.
