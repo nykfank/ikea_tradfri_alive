@@ -1,11 +1,11 @@
 #!/usr/bin/python
 # Determine if Ikea tradfri bulbs is are powered on (alive) or unreachable.
-api_ip = "192.168.1.135" # IP address of Ikea tradfri gateway
-api_user = 'nyk' # API user for PSK
-psk = 'J0cdsbHYCwbWDGnN' # Pre-shared key from 15011/9063 with {"9090":"api_user"} payload
-bulb_ids = 65538, 65541, 65542, 65544 # Device IDs of bulb to check
+api_ip = "CHANGE" # IP address of Ikea tradfri gateway
+api_user = 'CHANGE' # API user for PSK
+psk = 'CHANGE' # Pre-shared key from 15011/9063 with {"9090":"api_user"} payload
+bulb_ids = CHANGE, CHANGE, CHANGE, CHANGE # Device IDs of bulb to check (get list from 15001)
 logfile = '/opt/tradfri.txt' # Path of logfile
-coap_path = '/usr/local/bin/coap-client' # Path of coap-client binary
+coap_path = '/usr/local/bin/coap-client' # Path of coap-client binary 
 
 import subprocess, json, time
 
