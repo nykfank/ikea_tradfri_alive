@@ -18,6 +18,6 @@ sprintf("%d of %d (%2.1f%%) missing", missing_minutes, length(minutes), 100*miss
 
 # Prepare data for tradfi_bulbGhost.py
 tradfri_day[alive == 0 & power == 1, "power"] <- 0 # Not alive -> no power
-tradfri_day <- tradfri_day[,c("time", "bulb", "power", "brightness", "warmth")] # Select required columns
+tradfri_day <- tradfri_day[,c("bulb", "time", "power", "brightness", "warmth")] # Select required columns
 print(table(tradfri_day$bulb, tradfri_day$power)) # Tabulate number of ON minutes per bulb and day
-fwrite(tradfri_day, file="tradfri_day.tsv", sep="\t") # Save as TSV text
+fwrite(tradfri_day, file="tradfri_day.tsv", sep="\t", col.names = FALSE) # Save as TSV text
