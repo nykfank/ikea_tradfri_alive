@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# Determine if Ikea tradfri bulbs is are powered on (alive) or unreachable.
+# Replay the normal bulb usage pattern
 api_ip = "192.168.1.135" # IP address of Ikea tradfri gateway
 api_user = 'nyk' # API user for PSK
 psk = '' # Pre-shared key from 15011/9063 with {"9090":"api_user"} payload
