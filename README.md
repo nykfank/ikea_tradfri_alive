@@ -9,3 +9,5 @@ I don't know if there's better method, but this work fine. I used warmth because
     6. loop 5 times to point 2
 
 You may need to increase the number of loop interations if your gateway is slower to update the alive status for some reason. I tested it with 4 bulbs. If you have more, it may take more time.
+
+The logfile of bulb status created in this way can be used to replay the normal bulb usage pattern by ikea_tradfi_bulbGhost.py. The input data is extracted from the logfile by ikea_tradfi_log_analyze.R
