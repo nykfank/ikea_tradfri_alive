@@ -1,0 +1,8 @@
+{
+    "api_ip"    : "192.168.xxx.xxx",
+    "api_user"  : "xxxxxxxx",
+    "psk"       : "xxxxxxxx",
+    "logfile"   : "/opt/tradfri.txt",
+    "dayfile"   : "/opt/tradfri_day.tsv",
+    "coap_path" : "/usr/local/bin/coap-client"
+}
