@@ -1,15 +1,10 @@
 #!/usr/bin/python
 # Replay the normal bulb usage pattern
-api_ip = "192.168.1.135" # IP address of Ikea tradfri gateway
-api_user = 'nyk' # API user for PSK
-psk = '' # Pre-shared key from 15011/9063 with {"9090":"api_user"} payload
-coap_path = '/usr/local/bin/coap-client' # Path of coap-client binary
-dayfile = '/opt/tradfri_day.tsv'
-
 import subprocess, time, json
+cfg = json.load(open("/opt/ikea_tradfri_config.txt"))
 
 def getStatus(bulb_id):
-	cmd = coap_path, '-m', 'get', '-u', api_user, '-k', psk, 'coaps://%s:5684/15001/%d' % (api_ip, bulb_id)
+	cmd = cfg['coap_path'], '-m', 'get', '-u', cfg['api_user'], '-k', cfg['psk'], 'coaps://%s:5684/15001/%d' % (cfg['api_ip'], bulb_id)
 	p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 	out, err = p.communicate()
 	outj = json.loads(out)
@@ -19,13 +14,13 @@ def getStatus(bulb_id):
 	return map(int, [alive, power, brightness, warmth])
 
 def setStatus(bulb_id, power, brightness, warmth):
-	cmd = coap_path, '-m', 'put', '-u', api_user, '-k', psk, 'coaps://%s:5684/15001/%d' % (api_ip, bulb_id)
+	cmd = cfg['coap_path'], '-m', 'put', '-u', cfg['api_user'], '-k', cfg['psk'], 'coaps://%s:5684/15001/%d' % (cfg['api_ip'], bulb_id)
 	cmd += '-e', '{ "3311": [{ "5850": %d, "5851": %d, "5711": %d }] }' % (power, brightness, warmth)
 	p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 	out, err = p.communicate()
 
 daySet = {}
-for i in open(dayfile):
+for i in open(cfg['dayfile']):
 	bulb, minute, power, brightness, warmth = i.strip().split('\t')
 	bulb, power, brightness, warmth = map(int, [bulb, power, brightness, warmth])
 	if not daySet.has_key(bulb): daySet[bulb] = {}
