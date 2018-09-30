@@ -15,3 +15,4 @@ To automate, add this line to crontab to execute it every minute:
     * * * * * /usr/bin/ikea_tradri_alive.py
     
 The logfile of bulb status created in this way can be used to replay the normal bulb usage pattern by ikea_tradfi_bulbGhost.py. Add it to the crontab instead of the logger. The input data is extracted from the logfile by ikea_tradfi_log_analyze.R.
+Requires libcoap from https://github.com/home-assistant/libcoap
